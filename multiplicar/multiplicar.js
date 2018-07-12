@@ -27,15 +27,15 @@ let crearArchivo = async(base, limite = 10) => {
         data += `${base} * ${i} = ${base * i}\n`;
     }
 
-    fs.writeFileSync(`tablas/tabla-${base}-al-${limite}.txt`, data, (err) => {
-        let archivo = `tabla-${base}-al-${limite}.txt`;
+    let archivo = `tabla-${base}-al-${limite}.txt`;
+    fs.writeFile(`tablas/${archivo}`, data, (err) => {
 
         if (err) {
             throw new Error('No se creó el archivo');
-        } else {
-            return archivo;
         }
     });
+
+    return archivo
 };
 
 module.exports = {
